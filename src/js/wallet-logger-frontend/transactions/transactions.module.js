@@ -1,0 +1,1 @@
+var wlModuleTransactions = angular.module('transactions', []);
