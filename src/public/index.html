@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="walletLogger">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>Wallet Logger</title>
+        <title>Wallet Logger</title>
 
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/wallet-logger-frontend.min.css"/>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/wallet-logger-frontend.min.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <a class="navbar-brand">Wallet Logger</a>
+            </div>
+        </nav>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="js/wallet-logger-frontend/app.js"></script>
-    <script src="js/wallet-logger-frontend/controllers/Wallets.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <a class="navbar-brand">Wallet Logger</a>
-    </div>
-</nav>
+        <wallets-list></wallets-list>
 
-<div class="container-fluid" ng-controller="WalletsController" ng-cloak>
-    <div class="items-list">
-        <a class="item item-badge" ng-repeat="wallet in wallets" href="wallets/{{ wallet.id }}">
-            <i class="glyphicon glyphicon-piggy-bank"></i>
-            <span class="name">{{ wallet.name }}</span>
-            <!-- <span class="total_amount">{{ wallet.total_amount }}</span> -->
-        </a>
-    </div>
-</div>
-</body>
+        <wallet-detail></wallet-detail>
+        <accounts-list-for-a-wallet></accounts-list-for-a-wallet>
+
+        <account-detail></account-detail>
+        <transactions-list-for-an-account></transactions-list-for-an-account>
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="js/wallet-logger-frontend/app.js"></script>
+        <!-- Wallets Module -->
+        <script src="js/wallet-logger-frontend/wallets/wallets.module.js"></script>
+        <script src="js/wallet-logger-frontend/wallets/wallets.controller.js"></script>
+        <script src="js/wallet-logger-frontend/wallets/wallets-list.component.js"></script>
+        <script src="js/wallet-logger-frontend/wallets/wallet-detail.component.js"></script>
+
+        <!-- Accounts Module -->
+        <script src="js/wallet-logger-frontend/accounts/accounts.module.js"></script>
+        <script src="js/wallet-logger-frontend/accounts/accounts.controller.js"></script>
+        <script src="js/wallet-logger-frontend/accounts/accounts-list.component.js"></script>
+        <script src="js/wallet-logger-frontend/accounts/accounts-list-for-a-wallet.component.js"></script>
+        <script src="js/wallet-logger-frontend/accounts/account-detail.component.js"></script>
+
+        <!-- Transactions Module -->
+        <script src="js/wallet-logger-frontend/transactions/transactions.module.js"></script>
+        <script src="js/wallet-logger-frontend/transactions/transactions.controller.js"></script>
+        <script src="js/wallet-logger-frontend/transactions/transactions-list.component.js"></script>
+        <script src="js/wallet-logger-frontend/transactions/transactions-list-for-an-account.component.js"></script>
+        <script src="js/wallet-logger-frontend/transactions/transaction-detail.component.js"></script>
+    </body>
 </html>
