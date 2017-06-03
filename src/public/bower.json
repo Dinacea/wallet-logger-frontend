@@ -1,0 +1,23 @@
+{
+  "name": "wallet-logger-frontend",
+  "homepage": "https://github.com/thehand/wallet-logger-frontend",
+  "authors": [
+    "Francesco Salamone <salamone.francesco@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "angular": "^1.6.4",
+    "components-font-awesome": "^4.7.0"
+  }
+}
