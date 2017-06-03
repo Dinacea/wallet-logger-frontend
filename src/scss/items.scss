@@ -1,0 +1,35 @@
+.items-list {
+  align-items: flex-start;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  .item {
+    align-items: center;
+    background-color: darken($base-color, 20);
+    border-radius: .5em;
+    color: $white-text;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: .5em;
+    padding: 1em;
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken($base-color,15);
+    }
+    &:active {
+      background-color: darken($base-color,10);
+      box-shadow: 0 0 .5em darken($base-color, 20) inset;
+    }
+
+    i {
+      font-size: 3em;
+    }
+  }
+}
