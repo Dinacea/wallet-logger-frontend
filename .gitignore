@@ -1,0 +1,18 @@
+### PHP Storm stuff
+.idea
+
+### Composer
+src/composer.lock
+src/vendor/
+
+### My stuff
+note.txt
+
+## Bower
+src/public/bower_components
+
+## Compiled CSS
+src/public/css
+
+## Compiled JS
+src/public/js
