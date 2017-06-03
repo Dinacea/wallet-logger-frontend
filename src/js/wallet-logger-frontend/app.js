@@ -1,5 +1,5 @@
 var wlfApp = angular.module('walletLogger', []);
 
 wlfApp.constant('mainSettings', {
-  base_url: 'http://localhost:9999',
+  base_url: 'http://localhost:9999'
 });

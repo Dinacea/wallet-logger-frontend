@@ -6,7 +6,7 @@ wlfApp.controller('WalletsController', function WalletsController($scope, $http)
       .then(function (response) {
         $scope.wallets = response.data.item;
       });
-   };
+  };
 
-   this.getItems();
+  this.getItems();
 });
