@@ -1,0 +1,1 @@
+var wlModuleWallets = angular.module('wallets', []);
