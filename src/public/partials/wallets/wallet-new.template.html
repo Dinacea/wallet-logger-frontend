@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <form ng-submit="$new_wallet.createItem()">
+        <h3>Add a New Wallet</h3>
+        <div class="form-group">
+            <input type="text" required="required" class="form-control" name="name" placeholder="Name" ng-model="new_wallet_name" />
+        </div>
+        <div class="text-right">
+            <a class="btn btn-default btn-sm pull-left" href="/"><i class="glyphicon glyphicon-remove"></i> Abort</a>
+            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok"></i> Save</button>
+        </div>
+    </form>
+</div>
