@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <form ng-submit="$new_account.createItem()">
+        <h3>Add a New Account</h3>
+        <div class="form-group">
+            <input type="text" required="required" class="form-control" name="name" placeholder="Name" ng-model="new_account_name" />
+        </div>
+        <div class="text-right">
+            <a class="btn btn-default btn-sm pull-left" href="#!/wallets/{{ $new_account.current_wallet_id }}"><i class="glyphicon glyphicon-remove"></i> Abort</a>
+            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok"></i> Save</button>
+        </div>
+    </form>
+</div>
