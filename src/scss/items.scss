@@ -11,9 +11,9 @@
 
   .item {
     align-items: center;
-    background-color: darken($base-color, 20);
+    background-color: lighten($base-color, 50);
     border-radius: .5em;
-    color: $white-text;
+    color: $base-color;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -21,17 +21,44 @@
     margin: .5em;
     padding: 1em;
     text-decoration: none;
+    width: 31%;
 
     &:hover {
-      background-color: darken($base-color, 15);
+      background-color: lighten($base-color, 55);
     }
     &:active {
-      background-color: darken($base-color, 10);
-      box-shadow: 0 0 .5em darken($base-color, 20) inset;
+      background-color: lighten($base-color, 35);
+      color: lighten($base-color, 60);
+      box-shadow: 0 0 .5em lighten($base-color, 20) inset;
+
+      .amount {
+        color: inherit;
+      }
     }
 
-    i {
+    .glyphicon {
       font-size: 3em;
+      margin-bottom: 5px;
+    }
+
+    .name {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .amount {
+      font-size: 1.1em;
+      font-weight: normal;
+    }
+
+    &.item-new {
+      background-color: transparent;
+      border: 2px dashed lighten($base-color, 50);
+      color: lighten($base-color, 50);
+      padding: 1.6em 0;
     }
   }
 }
