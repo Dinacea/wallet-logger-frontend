@@ -30,11 +30,17 @@ wlfApp.config(['$locationProvider', '$routeProvider',
       .when('/wallets/:walletId/accounts', {
         template: '<accounts-list></accounts-list>'
       })
+      .when('/wallets/:walletId/accounts/new', {
+        template: '<account-new></account-new>'
+      })
       .when('/wallets/:walletId/accounts/:accountId', {
         template: '<account-detail></account-detail>' + '<transactions-list-for-an-account></transactions-list-for-an-account>'
       })
       .when('/wallets/:walletId/accounts/:accountId/transactions', {
         template: '<transactions-list></transactions-list>'
+      })
+      .when('/wallets/:walletId/accounts/:accountId/transactions/new', {
+        template: '<transaction-new></transaction-new>'
       })
       .when('/wallets/:walletId/accounts/:accountId/transactions/:transactionId', {
         template: '<transaction-detail></transaction-detail>'
