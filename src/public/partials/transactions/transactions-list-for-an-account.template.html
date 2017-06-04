@@ -1,9 +1,24 @@
 <div class="container-fluid" ng-cloak ng-init="$transactions_list_for_an_account.getItems()">
-    <div class="items-list">
-        <a class="item item-badge" ng-repeat="transaction in $transactions_list_for_an_account.transactions" href="#!/wallets/{{ $transactions_list_for_an_account.current_wallet_id }}/accounts/{{ $transactions_list_for_an_account.current_account_id }}/transactions/{{ transaction.id }}">
-            <i class="glyphicon glyphicon-piggy-bank"></i>
-            <span class="name">{{ transaction.description }}</span>
-            <!-- <span class="total_amount">{{ transaction.total_amount }}</span> -->
-        </a>
-    </div>
+    <h3>Transactions</h3>
+    <table class="table table-bordered table-responsive table-hover table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="transaction in $transactions_list_for_an_account.transactions">
+            <td>
+                <a href="#!/wallets/{{ $transactions_list_for_an_account.current_wallet_id }}/accounts/{{ $transactions_list_for_an_account.current_account_id }}/transactions/{{ transaction.id }}">
+                    <span class="name">{{ transaction.description }}</span><br />
+                    <span class="date">{{ transaction.transaction_date }}</span>
+                </a>
+            </td>
+            <td>
+                <span class="amount" ng-class="transaction.direction == 'IN' ? 'income' : 'outcome'">{{ transaction.amount }}</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
