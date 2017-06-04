@@ -11,7 +11,7 @@ wlfApp.constant('appSettings', {
 });
 
 wlfApp.config(['$locationProvider', '$routeProvider',
-  function config($locationProvider, $routeProvider) {
+  function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
     $routeProvider
@@ -36,8 +36,6 @@ wlfApp.config(['$locationProvider', '$routeProvider',
       .when('/wallets/:walletId/accounts/:accountId/transactions/:transactionId', {
         template: '<transaction-detail></transaction-detail>'
       })
-      .otherwise('/error', {
-        template: '<div class="">Sorry, your requested content does not exists</div>'
-      });
+      .otherwise('/error');
   }
 ]);
