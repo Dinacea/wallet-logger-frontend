@@ -1,0 +1,30 @@
+@import "variables";
+
+.table {
+  background-color: $white-bg;
+
+  thead {
+    background-color: darken($base-color, 20);
+
+    th {
+      text-align: center;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        &.amount {
+          text-align: right;
+          width: 8em;
+
+          &:before {
+            content: '€';
+            color: $silent-text;
+            float:left;
+          }
+        }
+      }
+    }
+  }
+}
