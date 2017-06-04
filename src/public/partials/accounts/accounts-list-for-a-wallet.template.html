@@ -1,6 +1,6 @@
 <div class="container-fluid" ng-cloak ng-init="$accounts_list_for_a_wallet.getItems()">
     <div class="items-list">
-        <a class="item item-badge" ng-repeat="account in $accounts_list_for_a_wallet.accounts" href="accounts/{{ account.id }}">
+        <a class="item item-badge" ng-repeat="account in $accounts_list_for_a_wallet.accounts" href="#!/wallets/{{ $accounts_list_for_a_wallet.current_wallet_id }}/accounts/{{ account.id }}">
             <i class="glyphicon glyphicon-piggy-bank"></i>
             <span class="name">{{ account.name }}</span>
             <!-- <span class="total_amount">{{ account.total_amount }}</span> -->
