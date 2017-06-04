@@ -7,7 +7,7 @@ var wlfApp = angular.module('walletLogger', [
 ]);
 
 wlfApp.constant('appSettings', {
-  base_url: 'http://localhost:9999'
+  api_base_url: 'http://localhost:9999'
 });
 
 wlfApp.config(['$locationProvider', '$routeProvider',
@@ -20,6 +20,9 @@ wlfApp.config(['$locationProvider', '$routeProvider',
       })
       .when('/wallets', {
         template: '<wallets-list></wallets-list>'
+      })
+      .when('/wallets/new', {
+        template: '<wallet-new></wallet-new>'
       })
       .when('/wallets/:walletId', {
         template: '<wallet-detail></wallet-detail>' + '<accounts-list-for-a-wallet></accounts-list-for-a-wallet>'
