@@ -25,6 +25,10 @@ body {
     justify-content: space-between;
     width: 100%;
   }
+
+  .text-white {
+    color: $white-text;
+  }
 }
 
 @import "table";
