@@ -1,4 +1,14 @@
 <div class="container-fluid" ng-init="$selected_wallet.getItem()">
-    <a href="#!/wallets"><i class="glyphicon glyphicon-chevron-left"></i> back to the wallets list</a>
-    <p>{{ $selected_wallet.selected_wallet.name }}</p>
+    <a class="btn-link text-white" href="/"><i class="glyphicon glyphicon-chevron-left"></i> All Wallets</a>
+    <form ng-submit="$selected_wallet.updateItem()">
+        <h3>Wallet</h3>
+        <div class="form-group">
+            <input type="text" required="required" class="form-control" name="name" placeholder="Name" ng-model="$selected_wallet.selected_wallet.name" value="{{ $selected_wallet.selected_wallet.name }}" />
+        </div>
+        <div class="text-right">
+            <a class="btn btn-warning btn-sm pull-left" ng-click="$selected_wallet.deleteItem();"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+            <a class="btn btn-default btn-sm" ng-click="$selected_wallet.getItem()"><i class="glyphicon glyphicon-repeat"></i> Reload</a>
+            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-floppy-disk"></i> Update</button>
+        </div>
+    </form>
 </div>
