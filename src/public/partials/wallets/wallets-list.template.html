@@ -3,7 +3,12 @@
         <a class="item item-badge" ng-repeat="wallet in $wallets_list.wallets" href="#!/wallets/{{ wallet.id }}">
             <i class="glyphicon glyphicon-piggy-bank"></i>
             <span class="name">{{ wallet.name }}</span>
-            <span class="total_amount">{{ wallet.total_amount }}</span>
+            <span class="amount" ng-class="wallet.total_amount < 0 ? 'text-danger' : 'text-success'">&euro; {{ wallet.total_amount | currency }}</span>
+        </a>
+
+        <a class="item item-badge item-new" href="#!/wallets/new">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="name"><i>Add new</i></span>
         </a>
     </div>
 </div>
