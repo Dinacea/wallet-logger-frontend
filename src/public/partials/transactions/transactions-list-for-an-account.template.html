@@ -1,5 +1,5 @@
 <div class="container-fluid" ng-cloak ng-init="$transactions_list_for_an_account.getItems()">
-    <h3>Transactions</h3>
+    <h3>Transactions <a class="btn btn-default btn-sm pull-right" href="#!/wallets/{{ $transactions_list_for_an_account.current_wallet_id }}/accounts/{{ $transactions_list_for_an_account.current_account_id }}/transactions/new"><i class="glyphicon glyphicon-plus"></i></a></h3>
     <table class="table table-bordered table-responsive table-hover table-striped table-condensed">
         <thead>
         <tr>

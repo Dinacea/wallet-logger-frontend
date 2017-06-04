@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <form class="form-inline" ng-submit="$new_transaction.createItem()">
+        <h3>Add a New Transaction</h3>
+        <div class="form-group">
+            <input type="text" required="required" class="form-control" name="transaction_date" placeholder="dd/mm/yyyy" ng-model="new_transaction_transaction_date" />
+            <input type="text" required="required" class="form-control" name="description" placeholder="Description" ng-model="new_transaction_description" />
+            <label class="form-check-label text-success">
+                <input class="form-check-input" type="radio" name="direction" ng-model="new_transaction_direction" value="IN" />
+                Income
+            </label>
+            <label class="form-check-label text-danger">
+                <input class="form-check-input" type="radio" name="direction" ng-model="new_transaction_direction" value="OUT" checked />
+                Outcome
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">&euro;</div>
+                <input type="text" required="required" class="form-control" name="amount" placeholder="0,00" ng-model="new_transaction_amount" />
+            </div>
+        </div>
+        <div class="text-right">
+            <a class="btn btn-default btn-sm pull-left" href="#!/wallets/{{ $new_transaction.current_wallet_id }}/accounts/{{ $new_transaction.current_account_id }}"><i class="glyphicon glyphicon-remove"></i> Abort</a>
+            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok"></i> Save</button>
+        </div>
+    </form>
+</div>

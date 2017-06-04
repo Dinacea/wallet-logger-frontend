@@ -1,11 +1,11 @@
-wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParams', 'appSettings', function ($http, $routeParams, appSettings) {
+wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParams', 'appSettings', '$scope', '$location', function ($http, $routeParams, appSettings, $scope, $location) {
   var $current_ctrl = this;
   $current_ctrl.current_wallet_id = $routeParams.walletId;
   $current_ctrl.current_account_id = $routeParams.accountId;
 
   $current_ctrl.transactions = [];
   $current_ctrl.getItems = function () {
-    $http.get(appSettings.base_url + "/wallets/" + $routeParams.walletId + "/accounts/" + $routeParams.accountId + "/transactions")
+    $http.get(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions")
       .then(function (response) {
         $current_ctrl.transactions = response.data.item;
       });
@@ -13,9 +13,44 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
 
   $current_ctrl.selected_transaction = null;
   $current_ctrl.getItem = function () {
-    $http.get(appSettings.base_url + "/wallets/" + $routeParams.walletId + "/accounts/" + $routeParams.accountId + "/transactions/" + $routeParams.transactionId)
+    $http.get(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + $routeParams.transactionId)
       .then(function (response) {
         $current_ctrl.selected_transaction = response.data.item;
       });
   };
+
+  $current_ctrl.createItem = function () {
+    var new_transaction_data = {
+      transaction_date: $scope.new_transaction_transaction_date,
+      description: $scope.new_transaction_description,
+      direction: $scope.new_transaction_direction,
+      amount: $scope.new_transaction_amount
+    };
+    $http.post(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions", $.param(new_transaction_data), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then(function (response) {
+        $location.path("/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + response.data.item.id);
+      });
+  };
+
+  $current_ctrl.updateItem = function () {
+    var transaction_data = {
+      transaction_date: $current_ctrl.selected_transaction.transaction_date,
+      description: $current_ctrl.selected_transaction.description,
+      direction: $current_ctrl.selected_transaction.direction,
+      amount: $current_ctrl.selected_transaction.amount
+    };
+    $http.post(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + $current_ctrl.selected_transaction.id, $.param(transaction_data), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then(function (response) {
+        $location.path("/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + response.data.item.id);
+      });
+  };
+
+  /*
+   $current_ctrl.deleteItem = function () {
+   $http.delete(appSettings.api_base_url + "/wallets/" + $routeParams.walletId)
+   .then(function () {
+   $location.path("/wallets");
+   });
+   };
+   */
 }]);
