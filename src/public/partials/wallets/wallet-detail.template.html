@@ -1,7 +1,7 @@
 <div class="container-fluid" ng-init="$selected_wallet.getItem()">
     <a class="btn-link text-white" href="/"><i class="glyphicon glyphicon-chevron-left"></i> All Wallets</a>
     <form ng-submit="$selected_wallet.updateItem()">
-        <h3>Wallet</h3>
+        <h3>Wallet <span class="pull-right">&euro; {{ $selected_wallet.selected_wallet.total_amount | euroFormat }}</span></h3>
         <div class="form-group">
             <input type="text" required="required" class="form-control" name="name" placeholder="Name" ng-model="$selected_wallet.selected_wallet.name" value="{{ $selected_wallet.selected_wallet.name }}" />
         </div>
