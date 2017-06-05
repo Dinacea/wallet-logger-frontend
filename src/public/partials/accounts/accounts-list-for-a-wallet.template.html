@@ -9,8 +9,16 @@
         </thead>
         <tbody>
             <tr ng-repeat="account in $accounts_list_for_a_wallet.accounts">
-                <td><a href="#!/wallets/{{ $accounts_list_for_a_wallet.current_wallet_id }}/accounts/{{ account.id }}"><span class="name">{{ account.name }}</span></a></td>
-                <td class="amount"><span class="total_amount" ng-class="account.total_amount < 0 ? 'text-danger' : 'text-success'">{{ account.total_amount | currency: "Euro" }}</span></td>
+                <td>
+                    <a href="#!/wallets/{{ $accounts_list_for_a_wallet.current_wallet_id }}/accounts/{{ account.id }}">
+                        <span class="name">{{ account.name }}</span>
+                    </a>
+                </td>
+                <td class="amount">
+                    <a href="#!/wallets/{{ $accounts_list_for_a_wallet.current_wallet_id }}/accounts/{{ account.id }}">
+                        <span class="total_amount" ng-class="account.total_amount < 0 ? 'text-danger' : 'text-success'">{{ account.total_amount | euroFormat }}</span>
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
