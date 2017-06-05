@@ -1,1 +1,1 @@
-var wlModuleTransactions = angular.module('transactions', []);
+var wlModuleTransactions = angular.module('transactions', ['ui.date']);
