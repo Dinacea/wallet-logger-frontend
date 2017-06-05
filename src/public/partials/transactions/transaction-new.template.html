@@ -2,7 +2,7 @@
     <form class="form-inline" ng-submit="$new_transaction.createItem()">
         <h3>Add a New Transaction</h3>
         <div class="form-group">
-            <input type="text" required="required" class="form-control" name="transaction_date" placeholder="dd/mm/yyyy" ng-model="new_transaction_transaction_date" />
+            <input type="text" required="required" class="form-control" name="transaction_date" placeholder="dd/mm/yyyy" ng-model="new_transaction_transaction_date" ui-date="dateOptions" />
             <input type="text" required="required" class="form-control" name="description" placeholder="Description" ng-model="new_transaction_description" />
             <label class="form-check-label text-success">
                 <input class="form-check-input" type="radio" name="direction" ng-model="new_transaction_direction" value="IN" />
