@@ -1,8 +1,9 @@
 <div class="container-fluid" ng-init="$selected_transaction.getItem()">
     <a class="btn-link text-white" href="#!/wallets/{{ $selected_transaction.current_wallet_id }}/accounts/{{ $selected_transaction.current_account_id }}"><i class="glyphicon glyphicon-chevron-left"></i> Back To Account</a>
     <form ng-submit="$selected_transaction.updateItem()">
+        <h3>Transaction</h3>
         <div class="form-group">
-            <input type="text" required="required" class="form-control" name="transaction_date" placeholder="dd/mm/yyyy" ng-model="$selected_transaction.selected_transaction.transaction_date" />
+            <input type="text" required="required" class="form-control" name="transaction_date" placeholder="dd/mm/yyyy" ng-model="$selected_transaction.selected_transaction.transaction_date" ui-date="dateOptions" />
             <input type="text" required="required" class="form-control" name="description" placeholder="Description" ng-model="$selected_transaction.selected_transaction.description" />
             <label class="form-check-label text-success">
                 <input class="form-check-input" type="radio" name="direction" ng-model="$selected_transaction.selected_transaction.direction" value="IN" />
@@ -15,8 +16,9 @@
             <input type="text" required="required" class="form-control" name="amount" placeholder="0,00" ng-model="$selected_transaction.selected_transaction.amount" />
         </div>
         <div class="text-right">
-            <a class="btn btn-default btn-sm pull-left" href="#!/wallets/{{ $selected_transaction.current_wallet_id }}/accounts/{{ $selected_transaction.current_account_id }}"><i class="glyphicon glyphicon-remove"></i> Abort</a>
-            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok"></i> Save</button>
+            <a class="btn btn-warning btn-sm pull-left" ng-click="$selected_transaction.deleteItem();"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+            <a class="btn btn-default btn-sm" ng-click="$selected_transaction.getItem()"><i class="glyphicon glyphicon-repeat"></i> Reload</a>
+            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-floppy-disk"></i> Update</button>
         </div>
     </form>
 </div>
