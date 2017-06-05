@@ -18,11 +18,27 @@
           text-align: right;
           width: 8em;
 
-          &:before {
-            content: '€';
-            color: $silent-text;
-            float:left;
+          a {
+            &:before {
+              content: '€';
+              color: $silent-text;
+              float:left;
+            }
           }
+        }
+
+        a {
+          display: inline-block;
+          width: 100%;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        .date {
+          font-size: .8em;
+          font-style: oblique;
         }
       }
     }
