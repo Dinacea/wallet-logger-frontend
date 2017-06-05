@@ -63,3 +63,32 @@
     }
   }
 }
+
+.item-detail {
+  margin-bottom: 1em;
+
+  h3 {
+    border-bottom: 2px solid $white-text;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .fake-title {
+      background-color: transparent;
+      border: 0;
+      display: inline;
+      flex-grow: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .pull-right {
+      flex-grow: 1;
+      font-size: .7em;
+      padding-left: .5em;
+      padding-top: .4em;
+      white-space: nowrap;
+    }
+  }
+}

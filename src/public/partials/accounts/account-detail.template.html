@@ -1,10 +1,7 @@
-<div class="container-fluid" ng-init="$selected_account.getItem()">
+<div class="container-fluid item-detail" ng-init="$selected_account.getItem()">
     <a class="btn-link text-white" href="#!/wallets/{{ $selected_account.current_wallet_id }}"><i class="glyphicon glyphicon-chevron-left"></i> Back To Wallet</a>
     <form ng-submit="$selected_account.updateItem()">
-        <h3>Account <span class="pull-right">&euro; {{ $selected_account.selected_account.total_amount | euroFormat }}</span></h3>
-        <div class="form-group">
-            <input type="text" required="required" class="form-control" name="name" placeholder="Name" ng-model="$selected_account.selected_account.name" value="{{ $selected_account.selected_account.name }}" />
-        </div>
+        <h3><input type="text" required="required" class="fake-title" name="name" placeholder="Name" ng-model="$selected_account.selected_account.name" value="{{ $selected_account.selected_account.name }}" /> <span class="pull-right">&euro; {{ $selected_account.selected_account.total_amount | euroFormat }}</span></h3>
         <div class="text-right">
             <a class="btn btn-warning btn-sm pull-left" ng-click="$selected_account.deleteItem();"><i class="glyphicon glyphicon-trash"></i> Delete</a>
             <a class="btn btn-default btn-sm" ng-click="$selected_account.getItem()"><i class="glyphicon glyphicon-repeat"></i> Reload</a>
