@@ -16,7 +16,6 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
     $http.get(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + $routeParams.transactionId)
       .then(function (response) {
         $current_ctrl.selected_transaction = response.data.item;
-        $current_ctrl.selected_transaction.transaction_date = $filter('date')($current_ctrl.Date($current_ctrl.selected_transaction.transaction_date), 'dd/MM/yyyy', '+0200');
       }, function () {
         $location.path("/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id);
       });
@@ -52,13 +51,8 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
     return new Date(date);
   };
 
-  $current_ctrl.itDate = function (date) {
-    console.log(date);
-    var it_date = date.split('/');
-    return $current_ctrl.Date($current_ctrl.Date(it_date[1] + '/' + it_date[0] + '/' + it_date[2]));
-  };
-
   $current_ctrl.dateTime = function (dateObj) {
+    dateObj.setHours(4); // Fix timezone
     return dateObj.toISOString().replace(/T/,' ').replace(/\.000Z/,'');
   };
 

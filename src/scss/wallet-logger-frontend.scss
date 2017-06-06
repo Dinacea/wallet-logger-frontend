@@ -31,6 +31,10 @@ body {
   }
 }
 
+#ui-datepicker-div {
+  z-index: 99 !important;
+}
+
 @import "table";
 @import "items";
 @import "wallets";

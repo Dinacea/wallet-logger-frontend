@@ -11,7 +11,7 @@
             <tr ng-repeat="transaction in $transactions_list_for_an_account.transactions">
                 <td>
                     <a href="#!/wallets/{{ $transactions_list_for_an_account.current_wallet_id }}/accounts/{{ $transactions_list_for_an_account.current_account_id }}/transactions/{{ transaction.id }}">
-                        <span class="date">{{ $transactions_list_for_an_account.Date(transaction.transaction_date) | date : 'dd/MM/yyyy' }}</span><br />
+                        <span class="date">{{ $transactions_list_for_an_account.Date(transaction.transaction_date) | date : 'dd/MM/yyyy' : '+0200' }}</span><br />
                         <span class="name">{{ transaction.description }}</span>
                     </a>
                 </td>
