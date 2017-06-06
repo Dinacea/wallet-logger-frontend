@@ -19,6 +19,8 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
     $http.get(appSettings.api_base_url + "/wallets/" + $routeParams.walletId)
       .then(function (response) {
         $current_ctrl.selected_wallet = response.data.item;
+      }, function () {
+        $location.path("/wallets");
       });
   };
 

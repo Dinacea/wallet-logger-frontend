@@ -20,6 +20,8 @@ wlModuleAccounts.controller('AccountsController', ['$http', '$routeParams', 'app
     $http.get(appSettings.api_base_url + "/wallets/" + $routeParams.walletId + "/accounts/" + $routeParams.accountId)
       .then(function (response) {
         $current_ctrl.selected_account = response.data.item;
+      }, function () {
+        $location.path("/wallets/" + $current_ctrl.current_wallet_id);
       });
   };
 

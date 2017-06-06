@@ -17,6 +17,8 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
       .then(function (response) {
         $current_ctrl.selected_transaction = response.data.item;
         $current_ctrl.selected_transaction.transaction_date = $filter('date')($current_ctrl.Date($current_ctrl.selected_transaction.transaction_date), 'dd/MM/yyyy', '+0200');
+      }, function () {
+        $location.path("/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id);
       });
   };
 
