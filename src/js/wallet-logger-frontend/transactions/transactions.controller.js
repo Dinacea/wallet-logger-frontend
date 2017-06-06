@@ -7,7 +7,7 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
   $current_ctrl.getItems = function () {
     $http.get(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions")
       .then(function (response) {
-        $current_ctrl.transactions = response.data.item;
+        $current_ctrl.transactions = response.data.item.reverse();
       });
   };
 
@@ -16,6 +16,7 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
     $http.get(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + $routeParams.transactionId)
       .then(function (response) {
         $current_ctrl.selected_transaction = response.data.item;
+        $current_ctrl.selected_transaction.transaction_date = $current_ctrl.Date($current_ctrl.selected_transaction.transaction_date);
       }, function () {
         $location.path("/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id);
       });
@@ -47,13 +48,13 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
       });
   };
 
-  $current_ctrl.Date = function(date) {
+  $current_ctrl.Date = function (date) {
     return new Date(date);
   };
 
   $current_ctrl.dateTime = function (dateObj) {
     dateObj.setHours(4); // Fix timezone
-    return dateObj.toISOString().replace(/T/,' ').replace(/\.000Z/,'');
+    return dateObj.toISOString().replace(/T/, ' ').replace(/\.000Z/, '');
   };
 
   $scope.dateOptions = {
