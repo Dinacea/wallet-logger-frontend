@@ -33,18 +33,16 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
     var wallet_data = {
       name: $current_ctrl.selected_wallet.name
     };
-    $http.post(appSettings.api_base_url + "/wallets/" + $current_ctrl.selected_wallet.id, $.param(wallet_data), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+    $http.put(appSettings.api_base_url + "/wallets/" + $current_ctrl.selected_wallet.id, $.param(wallet_data), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function (response) {
         $location.path("/wallets/" + response.data.item.id);
       });
   };
 
-  /*
-   $current_ctrl.deleteItem = function () {
-   $http.delete(appSettings.api_base_url + "/wallets/" + $routeParams.walletId)
-   .then(function () {
-   $location.path("/wallets");
-   });
-   };
-   */
+  $current_ctrl.deleteItem = function () {
+    $http.delete(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + $routeParams.transactionId)
+      .then(function () {
+        $location.path("/wallets");
+      });
+  };
 }]);
