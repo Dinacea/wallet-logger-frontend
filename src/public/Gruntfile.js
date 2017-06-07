@@ -10,7 +10,7 @@ module.exports = function(grunt) {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
         compress: true,
-        sourceMap: false,
+        //sourceMap: false,
         output: {
           comments: false
         }
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           style: 'compressed',
-          nocache: true
+          //nocache: true
         },
         files: {
           'css/wallet-logger-frontend.min.css': '../scss/wallet-logger-frontend.scss'
