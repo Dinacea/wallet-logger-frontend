@@ -1,0 +1,27 @@
+{
+  "name": "wallet-logger-frontend",
+  "version": "1.0.0",
+  "description": "A GUI for wallet-logger (https://github.com/thehand/wallet-logger)",
+  "main": "index.html",
+  "dependencies": {
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.0.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-concat-css": "^0.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thehand/wallet-logger-frontend.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thehand/wallet-logger-frontend/issues"
+  },
+  "homepage": "https://github.com/thehand/wallet-logger-frontend#readme"
+}

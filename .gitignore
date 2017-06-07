@@ -12,3 +12,7 @@ src/public/css
 
 ## Compiled JS
 src/public/js
+
+## NodeJS modules
+src/public/node_modules/
+src/public/package-lock.json
