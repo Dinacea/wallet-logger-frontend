@@ -66,7 +66,7 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
 
 
   $current_ctrl.deleteItem = function () {
-    $http.delete(appSettings.api_base_url + "/wallets/" + $routeParams.walletId)
+    $http.delete(appSettings.api_base_url + "/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id + "/transactions/" + $routeParams.transactionId)
       .then(function () {
         $location.path("/wallets/" + $current_ctrl.current_wallet_id + "/accounts/" + $current_ctrl.current_account_id);
       });
