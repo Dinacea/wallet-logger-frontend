@@ -20,7 +20,7 @@
 
           a {
             &:before {
-              content: '€';
+              content: '\20AC';
               color: $silent-text;
               float:left;
             }
