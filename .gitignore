@@ -16,3 +16,8 @@ src/public/js
 ## NodeJS modules
 src/public/node_modules/
 src/public/package-lock.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

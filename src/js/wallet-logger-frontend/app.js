@@ -7,7 +7,7 @@ var wlfApp = angular.module('walletLogger', [
 ]);
 
 wlfApp.constant('appSettings', {
-  api_base_url: 'http://localhost:9999'
+  api_base_url: 'https://api.fsalamone.it'
 });
 
 wlfApp.config(['$locationProvider', '$routeProvider',
