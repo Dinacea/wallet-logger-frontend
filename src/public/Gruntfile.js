@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   
   // Project configuration.
   grunt.initConfig({
@@ -52,10 +53,21 @@ module.exports = function(grunt) {
         src: 'js/<%= pkg.name %>.js',
         dest: 'js/<%= pkg.name %>.min.js'
       }
+    },
+    sass: {
+      dist: {
+        options: {
+          style: 'compressed',
+          nocache: true
+        },
+        files: {
+          'css/wallet-logger-frontend.min.css': '../scss/wallet-logger-frontend.scss'
+        }
+      }
     }
   });
 
 
   // Default task(s).
-  grunt.registerTask('default', ['concat', 'uglify']);
+  grunt.registerTask('default', ['concat', 'uglify', 'sass']);
 };
