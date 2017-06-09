@@ -1,22 +1,26 @@
 wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSettings', '$scope', '$location', 'localStorageService', function ($http, $routeParams, appSettings, $scope, $location, localStorageService) {
   var $current_ctrl = this;
   $current_ctrl.wallets = [];
-  $current_ctrl.message = { msgStr: false, style: false};
+  $current_ctrl.message = {msgStr: false, style: false};
+
+  $current_ctrl.init = function () {
+    var token = localStorageService.get('token');
+    if (null === token) {
+      $location.path("/login");
+    }
+  };
 
   $current_ctrl.getItems = function () {
-    $http({
-        url: appSettings.api_base_url + "/wallets",
-        method: 'GET',
-        headers: {
-          'Authorization': 'bearer ' + localStorageService.get('token')
-        }
+    $http.get(appSettings.api_base_url + "/wallets", {
+      headers: {
+        'Authorization': 'bearer ' + localStorageService.get('token')
+      }
     })
       .then(function (response) {
         $current_ctrl.wallets = response.data.item;
       }, function (response) {
         switch (response.status) {
           case 401:
-            console.log(response);
             $location.path("/login");
             break;
           default:
@@ -31,7 +35,11 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
 
   $current_ctrl.selected_wallet = null;
   $current_ctrl.getItem = function () {
-    $http.get(appSettings.api_base_url + "/wallets/" + $routeParams.walletId)
+    $http.get(appSettings.api_base_url + "/wallets/" + $routeParams.walletId, {
+      headers: {
+        'Authorization': 'bearer ' + localStorageService.get('token')
+      }
+    })
       .then(function (response) {
         $current_ctrl.selected_wallet = response.data.item;
       }, function (response) {
@@ -54,9 +62,15 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
 
   $current_ctrl.createItem = function () {
     var new_wallet_data = {
-      name: $scope.new_wallet_name
+      name: $scope.new_wallet_name,
+      fk_user_id: $scope.new_wallet_fk_user_id
     };
-    $http.post(appSettings.api_base_url + "/wallets", $.param(new_wallet_data), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+    $http.post(appSettings.api_base_url + "/wallets", $.param(new_wallet_data), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'bearer ' + localStorageService.get('token')
+      }
+    })
       .then(function (response) {
         $location.path("/wallets/" + response.data.item.id);
       }, function (response) {
@@ -76,9 +90,15 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
 
   $current_ctrl.updateItem = function () {
     var wallet_data = {
-      name: $current_ctrl.selected_wallet.name
+      name: $current_ctrl.selected_wallet.name,
+      fk_user_id: $current_ctrl.selected_wallet.fk_user_id
     };
-    $http.put(appSettings.api_base_url + "/wallets/" + $current_ctrl.selected_wallet.id, $.param(wallet_data), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+    $http.put(appSettings.api_base_url + "/wallets/" + $current_ctrl.selected_wallet.id, $.param(wallet_data), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'bearer ' + localStorageService.get('token')
+      }
+    })
       .then(function (response) {
         $location.path("/wallets/" + response.data.item.id);
       }, function (response) {
@@ -97,7 +117,11 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
   };
 
   $current_ctrl.deleteItem = function () {
-    $http.delete(appSettings.api_base_url + "/wallets/" + $routeParams.walletId)
+    $http.delete(appSettings.api_base_url + "/wallets/" + $routeParams.walletId, {
+      headers: {
+        'Authorization': 'bearer ' + localStorageService.get('token')
+      }
+    })
       .then(function () {
         $location.path("/wallets");
       }, function (response) {
@@ -114,4 +138,6 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
         }
       });
   };
+
+  $current_ctrl.init();
 }]);
