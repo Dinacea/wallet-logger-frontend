@@ -63,7 +63,7 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
   $current_ctrl.createItem = function () {
     var new_wallet_data = {
       name: $scope.new_wallet_name,
-      fk_user_id: $scope.new_wallet_fk_user_id
+      fk_user_id: localStorageService.get('id')
     };
     $http.post(appSettings.api_base_url + "/wallets", $.param(new_wallet_data), {
       headers: {
@@ -91,7 +91,7 @@ wlModuleWallets.controller('WalletsController', ['$http', '$routeParams', 'appSe
   $current_ctrl.updateItem = function () {
     var wallet_data = {
       name: $current_ctrl.selected_wallet.name,
-      fk_user_id: $current_ctrl.selected_wallet.fk_user_id
+      fk_user_id: localStorageService.get('id')
     };
     $http.put(appSettings.api_base_url + "/wallets/" + $current_ctrl.selected_wallet.id, $.param(wallet_data), {
       headers: {
