@@ -7,5 +7,9 @@
             <a class="btn btn-default btn-sm" ng-click="$selected_wallet.getItem()"><i class="glyphicon glyphicon-repeat"></i> Reload</a>
             <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-floppy-disk"></i> Update</button>
         </div>
+
+        <div class="app-messages" ng-messages="$selected_wallet.message">
+            <p ng-message="msgStr" ng-class="[ 'bg-' + $selected_wallet.message.style, 'text-' + $selected_wallet.message.style]">{{ $selected_wallet.message.msgStr }}</p>
+        </div>
     </form>
 </div>
