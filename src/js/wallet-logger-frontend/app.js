@@ -1,6 +1,6 @@
 var wlfApp = angular.module('walletLogger', [
   'ngRoute',
-
+  'users',
   'wallets',
   'accounts',
   'transactions'
@@ -16,7 +16,13 @@ wlfApp.config(['$locationProvider', '$routeProvider',
 
     $routeProvider
       .when('/', {
-        redirectTo: '/wallets'
+        redirectTo: '/login'
+      })
+      .when('/login', {
+        template: '<users-login-screen></users-login-screen>'
+      })
+      .when('/logout', {
+        template: '<users-logout-screen></users-logout-screen>'
       })
       .when('/wallets', {
         template: '<wallets-list></wallets-list>'
