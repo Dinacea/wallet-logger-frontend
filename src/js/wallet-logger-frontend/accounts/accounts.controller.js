@@ -18,7 +18,7 @@ wlModuleAccounts.controller('AccountsController', ['$http', '$routeParams', 'app
       }
     })
       .then(function (response) {
-        $current_ctrl.accounts = response.data.item.reverse();
+        $current_ctrl.accounts = response.data.item;
       }, function (response) {
         switch (response.status) {
           case 401:

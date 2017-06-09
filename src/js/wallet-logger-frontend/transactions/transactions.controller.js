@@ -19,7 +19,7 @@ wlModuleTransactions.controller('TransactionsController', ['$http', '$routeParam
       }
     })
       .then(function (response) {
-        $current_ctrl.transactions = response.data.item.reverse();
+        $current_ctrl.transactions = response.data.item;
       }, function (response) {
         switch (response.status) {
           case 401:
