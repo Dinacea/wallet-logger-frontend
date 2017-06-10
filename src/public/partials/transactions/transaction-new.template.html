@@ -38,5 +38,9 @@
             <a class="btn btn-default btn-sm pull-left" href="#!/wallets/{{ $new_transaction.current_wallet_id }}/accounts/{{ $new_transaction.current_account_id }}"><i class="glyphicon glyphicon-remove"></i> Abort</a>
             <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok"></i> Save</button>
         </div>
+
+        <div class="app-messages" ng-messages="$new_transaction.message">
+            <p ng-message="msgStr" ng-class="[ 'bg-' + $new_transaction.message.style, 'text-' + $new_transaction.message.style]">{{ $new_transaction.message.msgStr }}</p>
+        </div>
     </form>
 </div>

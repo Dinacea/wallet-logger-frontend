@@ -1,6 +1,8 @@
 var wlfApp = angular.module('walletLogger', [
   'ngRoute',
-
+  'ngMessages',
+  'LocalStorageModule',
+  'users',
   'wallets',
   'accounts',
   'transactions'
@@ -10,6 +12,12 @@ wlfApp.constant('appSettings', {
   api_base_url: 'https://api.fsalamone.it'
 });
 
+wlfApp.config(['localStorageServiceProvider', function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('wallet-logger')
+    .setNotify(true, true)
+}]);
+
 wlfApp.config(['$locationProvider', '$routeProvider',
   function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
@@ -17,6 +25,12 @@ wlfApp.config(['$locationProvider', '$routeProvider',
     $routeProvider
       .when('/', {
         redirectTo: '/wallets'
+      })
+      .when('/login', {
+        template: '<users-login-screen></users-login-screen>'
+      })
+      .when('/logout', {
+        template: '<users-logout-screen></users-logout-screen>'
       })
       .when('/wallets', {
         template: '<wallets-list></wallets-list>'

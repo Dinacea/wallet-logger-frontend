@@ -40,5 +40,9 @@
             <a class="btn btn-default btn-sm" ng-click="$selected_transaction.getItem()"><i class="glyphicon glyphicon-repeat"></i> Reload</a>
             <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-floppy-disk"></i> Update</button>
         </div>
+
+        <div class="app-messages" ng-messages="$selected_transaction.message">
+            <p ng-message="msgStr" ng-class="[ 'bg-' + $selected_transaction.message.style, 'text-' + $selected_transaction.message.style]">{{ $selected_transaction.message.msgStr }}</p>
+        </div>
     </form>
 </div>

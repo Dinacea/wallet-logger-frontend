@@ -1,5 +1,9 @@
 <div class="container-fluid" ng-cloak ng-init="$wallets_list.getItems()">
     <div class="items-list">
+        <div class="app-messages" ng-messages="$wallets_list.message">
+            <p ng-message="msgStr" ng-class="[ 'bg-' + $wallets_list.message.style, 'text-' + $wallets_list.message.style]">{{ $wallets_list.message.msgStr }}</p>
+        </div>
+
         <a class="item item-badge" ng-repeat="wallet in $wallets_list.wallets" href="#!/wallets/{{ wallet.id }}">
             <i class="glyphicon glyphicon-piggy-bank"></i>
             <span class="name">{{ wallet.name }}</span>

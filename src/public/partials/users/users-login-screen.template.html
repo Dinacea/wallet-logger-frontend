@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="wrapper">
+        <form ng-submit="$ctrl.tryLogin()" class="form-signin">
+            <h3 class="form-signin-heading">Please Sign In</h3>
+            <hr class="colorgraph">
+            <br>
+
+            <div class="app-messages" ng-messages="$ctrl.message">
+                <p ng-message="msgStr" ng-class="[ 'bg-' + $ctrl.message.style, 'text-' + $ctrl.message.style]">{{ $ctrl.message.msgStr }}</p>
+            </div>
+
+            <input type="text" class="form-control" ng-model="$ctrl.username" placeholder="Username" required="" autofocus=""/>
+            <input type="password" class="form-control" ng-model="$ctrl.password" placeholder="Password" required=""/>
+
+            <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Login</button>
+        </form>
+    </div>
+</div>

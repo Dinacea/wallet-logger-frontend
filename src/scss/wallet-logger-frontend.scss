@@ -29,6 +29,16 @@ body {
   .text-white {
     color: $white-text;
   }
+
+  .app-messages {
+    color: $text-color;
+
+    p {
+      border-radius: 3px;
+      font-weight: normal;
+      padding: .5em;
+    }
+  }
 }
 
 #ui-datepicker-div {
@@ -38,3 +48,4 @@ body {
 @import "table";
 @import "items";
 @import "wallets";
+@import "login";
